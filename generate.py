@@ -13,7 +13,7 @@ def nll_loss(logits, oracle_tokens, gate=None, ignore_index=-100):
         oracle_tokens = oracle_tokens.unsqueeze(0)  
     if gate is not None:
         if gate.dim() == 1:
-            gate = gate.unsqueeze(0).expand(B, -1)  #
+            gate = gate.unsqueeze(0).expand(B, -1)  
         oracle_tokens = oracle_tokens.clone()
         oracle_tokens[gate == 0] = ignore_index
     logits_flat = logits.view(B * L, V)
